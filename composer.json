@@ -2,4 +2,5 @@
     "require": {
         "q-phalcon/kernel": "v0.0.1"
     }
+    "type":"project"
 }
