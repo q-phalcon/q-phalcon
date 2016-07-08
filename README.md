@@ -57,7 +57,7 @@ You must be add php extension of phalcon to php configure file(php.ini)
 
 If you use the Redis database, You must be add php extension of redis to php configure file.
 [Download Redis for linux][link-Download_Redis]
-Of course,the PHP extension of Redis on windows system has been used provide!please search by youself!
+Of course,the PHP extension of Redis on windows system has been provide! please search by youself!
 
 
 # Document
