@@ -52,7 +52,12 @@ Via Composer
 $ composer create-project q-phalcon/q-phalcon My_Project_Name
 ```
 
+You must be add php extension of phalcon to php configure file(php.ini)
+[How to install phalcon][link-Download_Phalcon]
 
+If you use the Redis database, You must be add php extension of redis to php configure file.
+[Download Redis for linux][link-Download_Redis]
+Of course,the PHP extension of Redis on windows system has been used provide!please search by youself!
 
 
 # Document
@@ -98,15 +103,13 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 
 
-[ico-version]: https://img.shields.io/packagist/v/yunhack/helloworld.svg?style=flat-square
-[link-packagist]: https://packagist.org/packages/yunhack/helloworld
-
-
+[ico-version]: https://img.shields.io/packagist/v/q-phalcon/q-phalcon.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/q-phalcon/q-phalcon.svg?style=flat-square
 
-[ico-downloads]: https://img.shields.io/packagist/dt/yunhack/helloworld.svg?style=flat-square
-[link-downloads]: https://packagist.org/packages/yunhack/helloworld
-
-
+[link-packagist]: https://packagist.org/packages/q-phalcon/q-phalcon
+[link-downloads]: https://packagist.org/packages/q-phalcon/q-phalcon
 [link-author]: https://github.com/Qvil-Young
 [link-contributors]: ../../contributors
+[link-Download_Phalcon]: https://phalconphp.com/en/download
+[link-Download_Redis]: http://redis.io/download
