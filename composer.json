@@ -14,6 +14,6 @@
         }
     ],
     "require": {
-        "q-phalcon/kernel": "0.0.1"
+        "q-phalcon/kernel": "0.0.2"
     }
 }

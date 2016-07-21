@@ -17,7 +17,7 @@ return [
     |
     */
 
-    'debug' => true,
+    'debug' => false,
 
     'prod_tip' => "Whoops, looks like something went wrong",
 
@@ -43,7 +43,7 @@ return [
     |    注意：末尾不要加目录分割符，比如 '/' 符合。并且你应该确保该目录有写的权限
     |
     | 'request_start_log' => bool
-    |    请求日志属于debug级别的日志，因此'log_mode'必须大于等于0，才可能有系统日志
+    |    请求日志属于debug级别的日志，因此'log_mode'必须等于0，才可能有系统日志
     |    框架是否自动记录请求日志，true表示记录，false表示不记录
     |
     | 'request_log_post' => bool
@@ -53,11 +53,11 @@ return [
     |
     */
 
-    'log_mode' => 0,
+    'log_mode' => 4,
 
     'log_dir' => 'logs',
 
-    'request_start_log' => true,
+    'request_start_log' => false,
 
     'request_log_post' => false,
 
@@ -72,7 +72,15 @@ return [
     */
     'timezone' => "Asia/Shanghai",
 
+    /*
+    |--------------------------------------------------------------------------
+    | 命名空间
+    |--------------------------------------------------------------------------
+    |
+    | key是文件路径：常量 'QP_ROOT_PATH' 是项目根目录路径，value是命名空间
+    |
+    */
     'namespace' => [
-
+    
     ],
 ];

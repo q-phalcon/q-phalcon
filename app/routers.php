@@ -11,6 +11,6 @@ Router::modules([
 
 Router::set([
     "controllers"   => [
-        "index" => "Index",
-    ]
+        'index' => 'Index',
+    ],
 ]);
