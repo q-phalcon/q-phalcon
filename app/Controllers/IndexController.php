@@ -13,6 +13,7 @@ class IndexController extends Controller
 
     public function notFoundAction()
     {
-        return "404 not found";
+        header('HTTP/1.1 404 not found');
+        return "404 not found!";
     }
 }

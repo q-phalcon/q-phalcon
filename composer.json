@@ -1,7 +1,7 @@
 {
     "name": "q-phalcon/q-phalcon",
     "description": "The QPhalcon framework",
-    "keywords": ["PHP Framework", "q-phalcon", "QP Framework" ,"QPhalcon"],
+    "keywords": ["PHP Framework", "phalcon", "fast php" ,"easy php"],
     "homepage": "https://github.com/q-phalcon/q-phalcon",
     "license": "MIT",
     "type":"project",
@@ -9,11 +9,12 @@
         {
             "name": "Qvil Young",
             "homepage": "https://github.com/Qvil-Young",
-            "email": "qvil_young@163.com",
+            "email": "339799232@qq.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "q-phalcon/kernel": "0.0.2"
+        "q-phalcon/kernel": "0.1.0",
+        "yunhack/php-validator": "0.0.1"
     }
 }

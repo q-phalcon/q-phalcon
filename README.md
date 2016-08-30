@@ -10,97 +10,177 @@
 
 
 
+# 欢迎使用Qphalcon框架，我将带你一起了解它！
 
-# summary
-　　这是一个基于Phalcon的高性能PHP框架，简称QP！
-Phalcon是PHP的一个C扩展，虽然它不约束项目结构，但对于团队来说，没有规范，不成方圆！
-而QP是长期开发经验的结晶，它规范了项目结构，统一开发风格，为多人协作、系统升级和维护带来极大的好处！
+　　现在是2016年！互联网敏捷开发时代~~~
 
-###### 以下是QP的特性：
+　　QPhalcon以下简称QP！它是一个基于Phalcon封装的高性能PHP框架！
+关注过Phalcon的同学都知道，Phalcon堪称是世界上最快的PHP框架，没有之一！
 
-  * 支持Composer，您可以方便的添加第三方组件到项目中
-  * 支持更强大的命名空间定义，加上强大的Composer工具，灵活适应特殊项目
-  * 扩展了Phalcon框架的路由，支持模块开发
-  * 增强异常处理，调试更加容易
-  * 规范配置路径，更容易的使用配置参数
-  * 规范日志路径和内容，写日志更方便
-  * 支持不同类型的多个数据库连接(包括Redis)，操作数据库更方便
-  * 支持中间件
-  * QP强力推荐使用Redis数据库存储会话
+　　笔者利用PHP语言的简单和敏捷开发特性、结合phalcon带来的性能优势和强大的API文档社区特性，
+封装了一套适应目前主流BS架构的PHP框架——QP！
 
+　　Phalcon其实只是PHP的一个C扩展，在windows下，它是一个.dll文件！
+虽然它不强制约束项目结构，但对于团队配合开发来说，没有规范，不成方圆！
+笔者经过不断的提升自己对编程和设计思想的理解，不断的在开发实践中总结优雅的代码，成功完成QP框架的开发！
+制定出一个简单的框架，让开发人员关注的事情极大减少，真正实现敏捷开发！
 
-　　整个QP框架只有 100KB 左右，如果您想了解QP的设计思想，完全可以轻松阅读所有源码！
-你可以这么理解什么是QP框架：因为Phalcon不限制项目结构，不利于新手使用。因此QP就是为PHP新手搭建Phalcon项目结构，增强Phalcon功能的。
-在QP框架中，您必须要阅读QP基础文档，在实践开发中，您依然需要翻阅大量Phalcon官方文档和活跃在Phalcon社区！
-
-###### 以下是QP v1.0.0 版本功能上不足之处：
-
-  * QP文档正在编写中...
-  * 定时任务和脚本模块正在开发中...
-  * 用户自定义异常处理模块正在考虑有没有必要开发？希望广大粉丝留言反馈...
+　　关于项目配置、日志、异常处理、请求参数、响应、会话、常用工具...这些只需要简单的一两行代码就能搞定！
+你只需要把重点放在阅读phalcon官网的model和PDO上即可完成大部分的任务！
+如果遇到困难，你可以查阅QP或phalcon的官方文档和论坛，我相信任何问题都能解决！
 
 
+## QP只有三个关键字：简洁易懂、敏捷开发、性能
+
+以下是QP的特性：
+
+### 1. 使用Composer添加第三方组件
+　　编辑~/composer.json，根据composer工具轻松加入任何第三方组件！
+
+```php
+    "require": {
+        "q-phalcon/kernel": "0.1.0",
+        "yunhack/php-validator": "0.0.1"
+    }
+```
+
+### 2. 路由简单，支持模块化开发和中间件
+　　QP的路由既灵活又简单！支持三段：modules/controller/action，其中最后一段action是方法，倒数第二段controller是控制器，
+剩余的是模块，模块可以又分为N段，建议分三段即可！
+
+　　如下是模块化开发的例子：foo模块的路由文件被指定到任意路径！
+　　
+```php
+    Router::modules([
+        'foo' => 'app/Modules/Tome/_routers.php'
+    ]);
+    
+    Router::set([
+        "controllers"   => [
+            'user' => 'User',
+        ],
+        "namespace" => "Foo",
+        "middlewares" => ["SessionCheck"]
+    ]);
+```
+
+### 3. 增强Phalcon的异常处理，调试起来更加容易定位问题
+
+　　警告级别的异常也会被抛出，目的是争取在测试阶段就发现潜在的危机，并解决它！坚持认真对待每一个潜在的错误！
+
+### 4. 标准化日志风格和内容、让排错变得更简单
+
+　　日志统一存放在~logs目录下，支持复杂项目中日志的分模块需求！并且支持占位符替换！
+　　
+```php
+    Log::info('my name is {name}', ['name' => 'Qvil'], true, 'test-module');
+    
+    //日志文件：~/logs/test-module/2016-08-30_info.log
+    //内容：[2016-08-30 20:53:08] [127.0.0.1] [router : /] 【my name is Qvil】
+```
+
+### 5. 配置简单
+
+　　使用全局函数 config() 即可优先从本地.php配置文件从读取参数;
+
+　　本地配置文件：~/.php (相当于Laravel框架中的 ~/.env)
+
+　　生产配置文件目录：~/config
+　　
+```php
+    $host = config('database.default.host');
+```
+
+### 6. 数据库连接
+
+　　支持多个数据库连接，返回Phalcon的PDO对象，操作数据库变得非常简单！
+
+```php
+    $conn = \Qp\Kernel\DB::connection('db');
+```
+
+### 7. 读取会话
+
+　　QP强力推荐Redis作为会话存储介质！当然Phalcon本身支持的数据库和缓存是非常丰富的！
+
+```php
+    $user_name = \Qp\Kernel\Session::get('user_name');
+```
+
+### 8. 第三方组件 PHPValidator
+
+```php
+    Validator::make([$param,
+        'age' => 'present|integer_str|between:18,30|to_type:integer'
+    ]);
+```
+　　QP使用第三方组件作为请求参数校验的极力工具：yunhack/php-validator
+
+　　以上校验age参数：必传、整数格式的字符串、值在18-30之间，校验通过后，$param['age']将自动转成整数类型！
+　　
+### 9. 请求响应
+
+```php
+    $request = \Qp\Kernel\Request::request();
+
+    $response = \Qp\Kernel\Response::response();
+    $response->setContentType('application/json');
+    
+```
+
+### 至此：
+
+　　QP适合BS架构，需要敏捷开发的小型Web项目！
+当然用只要composer存在，任何功能都不是问题，但是默认的QP非常简洁轻巧，只有100KB左右哦，但是功能已经完全足够写一个博客系统了！
+
+　　在QP框架中，您可以阅读QP基础文档，而在实践开发中，您依然需要翻阅大量Phalcon官方文档和活跃在Phalcon社区！
+
+### 不足之处：
+
+　　目前还没有支持定时任务！
+
+
+### 阿里云1和1G性能测试结果(使用QP，完全不用担心PHP的性能问题了)
+
+　　读2次mysql小表、写1次redis、读1次redis、写一次文件日志、写1次mysql：100并发压力下，平均24毫秒一个请求
+
+　　同Laravel相对比，针对60万数据量的表进行查询操作，laravel的model需要800毫秒，而QP无论是否命中缓存，只需要200毫秒，几乎所有耗时都集中在数据库那一层了
+　
+　　
+
+　　
+
+　　
 
 
 # Install
 
-使用Composer工具安装项目(如果还有安装Composer，请自行搜索如何安装)
+### 1. 下载q-phalcon框架
+　　使用Composer工具安装项目，关于composer的用法，请自行学习！
 
-Via Composer
-
-``` bash
-$ composer create-project q-phalcon/q-phalcon My_Project_Name
+```php
+    composer create-project q-phalcon/q-phalcon
 ```
 
-You must be add php extension of phalcon to php configure file(php.ini)
-[How to install phalcon][link-Download_Phalcon]
+### 2. 需要的环境
 
-If you use the Redis database, You must be add php extension of redis to php configure file.
-[Download Redis for linux][link-Download_Redis]
-Of course,the PHP extension of Redis on windows system has been provide! please search by youself!
+　　需要 php >= 7.0
 
+　　需要 phalcon扩展：[install phalcon][link-Download_Phalcon]
 
-# Document
+　　强烈建议使用redis作为会话驱动方式！安装 redis-server：[Download Redis for linux][link-Download_Redis]
 
-Sorry, 文档正在更新中...敬请期待
+　　因此，同时需要redis扩展
 
+### 3. 配置
 
+　　修改php.ini文件中：session.serialize\_handler = php\_serialize (否则无法使用Session::getAll方法)
 
-
-# Change log
-
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
-
-
-
-# Contributing
-
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
-
-
-
-
-# Security
-
-If you discover any security related issues, please email qvil_yong@163.com instead of using the issue tracker.
-
-
-
-
-# Credits
-
-- [Qvil Young][link-author]
-- [All Contributors][link-contributors]
-
-
-
+　　当然别忘记在php.ini中添加 phalcon和redis扩展哦~~~
 
 # License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-
+　　The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
 
 [ico-version]: https://img.shields.io/packagist/v/q-phalcon/q-phalcon.svg?style=flat-square
@@ -109,7 +189,5 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [link-packagist]: https://packagist.org/packages/q-phalcon/q-phalcon
 [link-downloads]: https://packagist.org/packages/q-phalcon/q-phalcon
-[link-author]: https://github.com/Qvil-Young
-[link-contributors]: ../../contributors
 [link-Download_Phalcon]: https://phalconphp.com/en/download
 [link-Download_Redis]: http://redis.io/download
