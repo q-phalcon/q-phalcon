@@ -43,8 +43,12 @@ return [
     |    注意：末尾不要加目录分割符，比如 '/' 符合。并且你应该确保该目录有写的权限
     |
     | 'request_start_log' => bool
-    |    请求日志属于debug级别的日志，因此'log_mode'必须等于0，才可能有系统日志
+    |    请求日志属于debug级别的日志，因此'log_mode'必须大于等于0，才可能有系统日志
     |    框架是否自动记录请求日志，true表示记录，false表示不记录
+    |
+    | 'framework_error_log' => bool
+    |    错误日志属于error级别的日志，因此'log_mode'必须大于等于4，才可能有系统日志
+    |    框架是否自动记录框架级别的错误日志，true表示记录，false表示不记录
     |
     | 'request_log_post' => bool
     |    在'request_start_log'开启的情况下，请求日志中是否记录post表单参数
@@ -58,6 +62,8 @@ return [
     'log_dir' => 'logs',
 
     'request_start_log' => false,
+
+    'framework_error_log' => false,
 
     'request_log_post' => false,
 

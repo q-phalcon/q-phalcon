@@ -12,6 +12,7 @@ return [
         'debug' => true,
         'log_mode' => 0,
         'request_start_log' => true,
+        'framework_error_log' => true,
         'request_log_post' => true,
     ],
 
