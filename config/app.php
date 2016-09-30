@@ -63,7 +63,7 @@ return [
 
     'request_start_log' => false,
 
-    'framework_error_log' => false,
+    'framework_error_log' => true,
 
     'request_log_post' => false,
 

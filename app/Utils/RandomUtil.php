@@ -24,7 +24,7 @@ class RandomUtil
         return str_replace('-', '', $random->uuid());
     }
 
-    public static function getNum($max)
+    public static function getNum(integer $max)
     {
         $random = self::random();
         return $random->number($max);
