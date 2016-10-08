@@ -15,6 +15,6 @@
     ],
     "require": {
         "q-phalcon/kernel": "0.2.x",
-        "yunhack/php-validator": "0.1.x"
+        "yunhack/php-validator": "0.0.1"
     }
 }
