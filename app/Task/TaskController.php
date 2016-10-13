@@ -5,7 +5,7 @@ namespace App\Task;
 use Qp\Kernel\Task;
 use Phalcon\Mvc\Controller;
 
-class QpTaskController extends Controller
+class TaskController extends Controller
 {
     public function kernelAction()
     {
